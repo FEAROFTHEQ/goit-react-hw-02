@@ -1,0 +1,16 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+p{
+  margin: 0;
+}
+
+ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
