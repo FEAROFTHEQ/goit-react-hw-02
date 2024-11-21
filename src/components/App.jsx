@@ -32,7 +32,7 @@ function App() {
     [option]: userFeedback[option]+1,
   }))
   }
-  const totalFeedback= userFeedback.good + userFeedback.neutral + userFeedback.bad;
+  const totalFeedback= userFeedback?.good + userFeedback?.neutral + userFeedback?.bad;
   const resetFeedback = ()=>(
     setUserFeedback(()=>({
       good: 0,
