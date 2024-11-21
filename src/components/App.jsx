@@ -9,16 +9,9 @@ import Notification from './Notification/Notification'
 
 function App() {
   const feedback = window.localStorage.getItem("feedback");
+
   const [userFeedback, setUserFeedback ] = useState(()=>{
-    if (feedback !== '') {
-      return JSON.parse(feedback);
-    }
-    
-    return{
-      good: 0,
-      neutral: 0,
-      bad: 0
-    };
+    return feedback!== '' ? JSON.parse(feedback) : { good: 0, neutral: 0, bad: 0 };
   }
     
   );
@@ -44,7 +37,7 @@ function App() {
   return (
     <>
       <Description />
-      <Options options={userFeedback ? Object.keys(userFeedback) : []} updateFeedback={updateFeedback}/>
+      <Options options={Object.keys(userFeedback)} updateFeedback={updateFeedback}/>
       {totalFeedback > 0 ? <button onClick={resetFeedback}>Reset</button>:<></>}
       {totalFeedback > 0 ? <Feedback userFeedback={userFeedback}/>:<Notification/>}
       {totalFeedback > 0 ? <p className='feedbackTotal'>Total Feedback: {totalFeedback}</p>:<></>}
