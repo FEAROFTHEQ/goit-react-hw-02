@@ -8,10 +8,13 @@ import Notification from './Notification/Notification'
 
 
 function App() {
-  const feedback = window.localStorage.getItem("feedback");
-
+ const initFeedback={ good: 0, neutral: 0, bad: 0 }
   const [userFeedback, setUserFeedback ] = useState(()=>{
-    return feedback!== '' ? JSON.parse(feedback) : { good: 0, neutral: 0, bad: 0 };
+    const feedback = window.localStorage.getItem("feedback");
+    if (feedback !== null){
+      return JSON.parse(feedback);
+    }
+    return  initFeedback;
   }
     
   );
