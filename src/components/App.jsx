@@ -1,7 +1,7 @@
 import './App.css'
 import React from 'react'
 import { useState, useEffect } from 'react';
-import Description from './Descriprion/Description';
+import Description from './Description/Description';
 import Options from './Options/Options';
 import Feedback from './Feedback/Feedback';
 import Notification from './Notification/Notification'
@@ -40,11 +40,8 @@ function App() {
   return (
     <>
       <Description />
-      <Options options={Object.keys(userFeedback)} updateFeedback={updateFeedback}/>
-      {totalFeedback > 0 ? <button onClick={resetFeedback}>Reset</button>:<></>}
-      {totalFeedback > 0 ? <Feedback userFeedback={userFeedback}/>:<Notification/>}
-      {totalFeedback > 0 ? <p className='feedbackTotal'>Total Feedback: {totalFeedback}</p>:<></>}
-      {totalFeedback > 0 ? <p>Positive Feedback: {positiveFeedback}%</p>:<></>}
+      <Options options={Object.keys(userFeedback)} updateFeedback={updateFeedback} totalFeedback={totalFeedback} onReset={resetFeedback} />
+      {totalFeedback > 0 ? <Feedback userFeedback={userFeedback} total={totalFeedback} positive={positiveFeedback} />:<Notification/>}
     </>
   );
 };

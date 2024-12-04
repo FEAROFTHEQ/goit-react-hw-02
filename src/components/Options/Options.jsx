@@ -1,6 +1,6 @@
 import s from "./Options.module.css"
 
-const Options = ({options, updateFeedback})=>
+const Options = ({options, updateFeedback, totalFeedback, onReset})=>
 {
     return(
         <div className={s.container}>
@@ -9,6 +9,7 @@ const Options = ({options, updateFeedback})=>
                     {option}
                 </button>
             ))}
+             {totalFeedback > 0 ? <button onClick={onReset}>Reset</button>:<></>}
         </div>
     )
 }
